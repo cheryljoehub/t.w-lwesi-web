@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "@/components/ui/image";
 import { CheckCircle2 } from "lucide-react";
-import CAREER_IMG from "../../../images/1.jpg?inline";
+import CAREER_IMG from "../../../images/7.jpg?inline";
 
 const POINTS = [
   "Onboarding & preproduction planning",
