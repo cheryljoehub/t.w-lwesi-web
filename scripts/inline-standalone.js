@@ -30,7 +30,7 @@ await inlineAsset(
 await inlineAsset(
   /<script type="module" crossorigin src="([^"]+)"><\/script>/,
   (content, assetPath) => {
-    const moduleUrl = `new URL(${JSON.stringify(assetPath)}, location.protocol === "file:" ? document.baseURI : \`\${location.origin}/\`).href`;
+    const moduleUrl = `new URL(${JSON.stringify(assetPath)}, document.baseURI).href`;
     const inlineContent = content.replaceAll("import.meta.url", moduleUrl);
     return `<script type="module">\n${inlineContent}\n</script>`;
   },

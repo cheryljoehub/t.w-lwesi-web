@@ -3,10 +3,9 @@ import { Mic, Radio, Briefcase, Presentation, ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom";
 import { Image } from "@/components/ui/image";
 import STUDIO_IMG from "../../../images/1.jpg?inline";
-
-const CONTROL_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/ed86d3395_generated_846b1a0f.png";
-const CAREER_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/3b4de969e_generated_0bf43daa.png";
-const SPEAKER_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/551349069_generated_cb6691c1.png";
+import CONTROL_IMG from "../../../images/control-room.png?no-inline";
+import CAREER_IMG from "../../../images/career-services.png?no-inline";
+import SPEAKER_IMG from "../../../images/speaker-series.png?no-inline";
 
 const PILLARS = [
   {

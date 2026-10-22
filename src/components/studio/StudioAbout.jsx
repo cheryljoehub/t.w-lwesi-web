@@ -1,8 +1,7 @@
 import React from "react";
 import { Image } from "@/components/ui/image";
 import { Cross, Radio, Mic, Video, SlidersHorizontal } from "lucide-react";
-
-const CONTROL_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/ed86d3395_generated_846b1a0f.png";
+import CONTROL_IMG from "../../../images/control-room.png?no-inline";
 
 const FEATURES = [
   { icon: Radio, label: "Broadcast control room" },

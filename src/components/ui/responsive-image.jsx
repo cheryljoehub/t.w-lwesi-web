@@ -11,17 +11,16 @@ import { useResponsiveImage } from "./use-responsive-image"
  *   focalPoint?: { x: number; y: number };
  *   quality: number;
  *   aspectRatio?: string;
- *   onSourceChange: (value: string, className: string) => void;
  * }} ResponsiveImageProps
  */
 
 /** @type {React.ForwardRefRenderFunction<HTMLImageElement, ResponsiveImageProps>} */
 const ResponsiveImageComponent = (
-  { src, parsed, fittingType, focalPoint, quality, className, style, aspectRatio, onLoad, onSourceChange, ...props },
+  { src, parsed, fittingType, focalPoint, quality, className, style, aspectRatio, onLoad, ...props },
   ref
 ) => {
     const { wrapperRef, imgRef, loaded, options, handleLoad } = useResponsiveImage(
-      { parsed, fittingType, focalPoint, quality, className, onLoad, onSourceChange }, ref
+      { parsed, fittingType, focalPoint, quality, onLoad }, ref
     )
     const { wrapperProps, imageProps } = splitImageProps(props)
 
@@ -31,14 +30,10 @@ const ResponsiveImageComponent = (
         className={cn("inline-block relative", className)}
         style={{ aspectRatio, ...style }}
         {...wrapperProps}
-        data-base44-image=""
-        data-base44-image-src={src}
       >
-        {/* Contain both image layers inside the padded content box without adding an edit target. */}
-        <span data-source-location={undefined} className="block relative w-full h-full overflow-hidden">
+        <span className="block relative w-full h-full overflow-hidden">
           {options && !loaded && (
             <img
-              data-source-location={undefined}
               src={buildTransformUrl(parsed, {
                 ...options,
                 width: 20,
@@ -59,7 +54,6 @@ const ResponsiveImageComponent = (
           )}
           {options && (
             <img
-              data-source-location={undefined}
               ref={imgRef}
               src={buildTransformUrl(parsed, options)}
               srcSet={buildSrcSet(parsed, options)}

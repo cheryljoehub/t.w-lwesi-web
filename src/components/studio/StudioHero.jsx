@@ -1,9 +1,9 @@
 import React from "react";
 import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Image } from "@/components/ui/image";
 import STUDIO42_LOGO_TAGLINE from "../../../images/2.png?no-inline";
-
-const STUDIO_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/413d547a4_generated_7c2b2041.png";
+import STUDIO_IMG from "../../../images/studio-room.png?no-inline";
 
 export default function StudioHero() {
   return (
@@ -26,19 +26,19 @@ export default function StudioHero() {
           Taking your content to the next level.
         </p>
         <div className="mt-12">
-          <a
-            href="#contact"
+          <Link
+            to="/studio-42#contact"
             className="inline-flex items-center gap-2 rounded-full bg-studio-yellow text-studio-yellow-foreground px-8 py-4 text-sm font-body font-bold uppercase tracking-[0.14em] transition-transform hover:scale-[1.04]"
           >
             Book the Studio
-          </a>
+          </Link>
         </div>
       </div>
 
-      <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-studio-muted hover:text-studio-yellow transition-colors flex flex-col items-center gap-2">
+      <Link to="/studio-42#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-studio-muted hover:text-studio-yellow transition-colors flex flex-col items-center gap-2">
         <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
         <ArrowDown size={16} className="animate-bounce" />
-      </a>
+      </Link>
     </section>
   );
 }

@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 import { Image } from "@/components/ui/image";
-
-const EVENT_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/413d547a4_generated_7c2b2041.png";
+import EVENT_IMG from "../../../images/studio-room.png?no-inline";
 
 export default function UpcomingEvent() {
   return (

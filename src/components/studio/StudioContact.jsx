@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { CheckCircle2, Mail, MapPin } from "lucide-react";
+import React from "react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function StudioContact() {
-  const [sent, setSent] = useState(false);
-
   /** @param {React.FormEvent<HTMLFormElement>} e */
   const onSubmit = (e) => {
     e.preventDefault();
-    setSent(true);
+    const formData = new FormData(e.currentTarget);
+    const fields = [];
+    formData.forEach((value, label) => fields.push(`${label}: ${value}`));
+    const body = fields.join("\n");
+    const subject = encodeURIComponent("Studio 42 booking request");
+    window.location.href = `mailto:studio42@gcu.edu?subject=${subject}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -36,29 +39,22 @@ export default function StudioContact() {
         </div>
 
         <div className="lg:col-span-6 lg:col-start-7">
-          {sent ? (
-            <div className="h-full min-h-[320px] grid place-items-center rounded-sm border border-white/10 bg-white/[0.03] p-10 text-center">
-              <div>
-                <CheckCircle2 size={40} className="text-studio-yellow mx-auto" />
-                <h3 className="mt-5 font-heading text-2xl font-bold text-studio-foreground">Request received</h3>
-                <p className="mt-3 text-sm text-studio-muted max-w-sm mx-auto">
-                  Thanks — the Studio 42 team will reach out shortly to coordinate your booking.
-                </p>
-              </div>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="rounded-sm border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5">
+          <form onSubmit={onSubmit} className="rounded-sm border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5">
+              <p className="text-sm text-studio-muted">
+                Submitting opens your email app with your booking details ready to send.
+              </p>
               <div className="grid sm:grid-cols-2 gap-5">
                 <Field label="Full name" name="name" placeholder="Jane Doe" />
                 <Field label="Email" name="email" type="email" placeholder="jane@email.com" />
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Organization" name="org" placeholder="Optional" />
+                <Field label="Organization" name="organization" placeholder="Optional" required={false} />
                 <Field label="Show type" name="type" placeholder="Podcast, interview, livestream…" />
               </div>
               <div>
                 <label className="block text-[11px] font-mono uppercase tracking-[0.15em] text-studio-muted mb-2">Tell us about your project</label>
                 <textarea
+                  name="project"
                   required
                   rows={4}
                   placeholder="What are you looking to produce?"
@@ -71,21 +67,20 @@ export default function StudioContact() {
               >
                 Book the Studio
               </button>
-            </form>
-          )}
+          </form>
         </div>
       </div>
     </section>
   );
 }
 
-/** @param {{ label: string, name: string, type?: string, placeholder?: string }} props */
-function Field({ label, name, type = "text", placeholder }) {
+/** @param {{ label: string, name: string, type?: string, placeholder?: string, required?: boolean }} props */
+function Field({ label, name, type = "text", placeholder, required = true }) {
   return (
     <div>
       <label className="block text-[11px] font-mono uppercase tracking-[0.15em] text-studio-muted mb-2">{label}</label>
       <input
-        required
+        required={required}
         type={type}
         name={name}
         placeholder={placeholder}

@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import STUDIO42_TW_LEWIS_LOGO from "../../../images/4.png?no-inline";
-const STUDIO_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/413d547a4_generated_7c2b2041.png";
-const CONTROL_IMG = "https://media.base44.com/images/public/6ad27cb92782a0ec31c3bb2a/ed86d3395_generated_846b1a0f.png";
+import STUDIO_IMG from "../../../images/studio-room.png?no-inline";
 
 export default function StudioPortal() {
   return (
@@ -67,7 +66,6 @@ export default function StudioPortal() {
               </div>
             ))}
           </div>
-          <div className="hidden">{CONTROL_IMG}</div>
         </div>
       </div>
     </section>
