@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import STUDIO42_LOGO_TAGLINE from "../../images/2.png?no-inline";
+import STUDIO42_LOGO_TAGLINE from "../../images/9.png?no-inline";
 import TW_LEWIS_LOGO from "../../images/5.png?no-inline";
 
 export default function Footer() {
